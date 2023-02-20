@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=div, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        订阅视图-1: <sapn class="box-1"></sapn></br>
+        订阅视图-2: <span class="box-2"></span>
+    </div>
+    <script src="./index.js"></script>
+    <script>
+        let domoObj = {}; // 等同于 Vue => Data()
+
+        dataHijack({
+            data: domoObj,
+            tag: 'view-1',
+            datakey: 'one',
+            selector: '.box-1'
+        });
+
+        dataHijack({
+            data: domoObj,
+            tag: 'view-2',
+            datakey: 'two',
+            selector: '.box-2'
+        });
+
+        // 1. 初始加载
+        domoObj.one = '数据驱动';
+        domoObj.two = '响应式原理';
+    </script>
+</body>
+</html>
