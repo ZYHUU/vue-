@@ -1,7 +1,7 @@
 // 订阅器模式
 let  Dep = {
     // 容器
-    list: [],
+    list: {},
     // 订阅
     listen: function(key, fn) {
         (this.list[key] || (this.list[key] = [])).push(fn)
