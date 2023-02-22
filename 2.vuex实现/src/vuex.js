@@ -1,9 +1,7 @@
 let Vue;
 // 提取key value
 const forEachFn = (obj, cb) => {
-  Object.keys(obj).forEach((key) => {
-    key ? cb(key, obj[key]) : null;
-  });
+  Object.keys(obj).forEach(key => cb(key, obj[key]));
 };
 class Store {
   constructor(options = {}) {
@@ -65,9 +63,9 @@ const install = (_Vue) => {
       if (this.$options && this.$options.store) {
         // 根组件
         this.$store = this.$options.store;
-      } else {
+      } else if (this.$parent && this.$parent.$store) {
         // 子组件
-        this.$store = this.$parent ? this.$parent.$store : {};
+        this.$store = this.$parent.$store;
       }
       // 为什么不挂在Vue.prototype?
       // 1. new Vue() 每一个都会带store
